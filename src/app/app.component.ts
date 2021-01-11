@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularTest';
+  supply = {amount: 1000, price: 0}
+  queue = []
+  xxx = 0
+
+  clickerFunction = () => {
+    this.queue.push(this.supply)
+    console.log(this.supply)
+  }
+
+  inputChange = () => {
+    console.log(this.xxx)
+    this.supply.amount = 1
+  }
 }
