@@ -1,3 +1,12 @@
-<div>Magazyn</div>
-<input type="number" [(ngModel)] = "supply.amount"/>
-<button (click)="clickerFunction()">Push</button>
+<div>Warehouse - Stocked: {{stocked}}</div>
+<div>
+  ADD
+  <input type="number" step="100" min="100" [(ngModel)] = "supply.amount"/>
+  <input type="number" step="0.1" min="0.1"[(ngModel)] = "supply.price"/>
+  <button (click)="addToStorage()">+</button>
+</div>
+<div>
+  SUBSTRACT
+  <input type="number" step="100" min="0" [(ngModel)] = "supply.wanted"/>
+  <button (click)="removeFromStorage()">+</button>
+</div>
