@@ -1,4 +1,5 @@
 <div>Warehouse - Stocked: {{stocked}}</div>
+<div>Money Spent: {{moneySpent}}</div>
 <div>
   ADD
   <input type="number" step="100" min="100" [(ngModel)] = "supply.amount"/>
@@ -8,5 +9,6 @@
 <div>
   SUBSTRACT
   <input type="number" step="100" min="0" [(ngModel)] = "supply.wanted"/>
-  <button (click)="removeFromStorage()">+</button>
+  <button (click)="removeFromStorage()">-</button>
 </div>
+<div class="task" *ngFor="let item of queue">Amount: {{item.amount}} Price per unit: {{item.price}}</div>
