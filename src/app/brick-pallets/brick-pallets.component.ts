@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BrickPalletsComponent implements OnInit {
 
-  @Input() data:string
+  @Input() data:{amount:number, price:number}
   bricksImage:string = "assets/images/bricks.png"
 
   constructor() { }
