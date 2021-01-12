@@ -1,14 +1,62 @@
 <div>Warehouse - Stocked: {{stocked}}</div>
-<div>Money Spent: {{moneySpent}}</div>
-<div>
-  ADD
-  <input type="number" step="100" min="100" [(ngModel)] = "supply.amount"/>
-  <input type="number" step="0.1" min="0.1"[(ngModel)] = "supply.price"/>
-  <button (click)="addToStorage()">+</button>
+<div>Money Spent: {{moneySpent}}zł</div>
+<div class="row">
+  <div class="column">
+    <div class="window">
+      <div class="title">
+        ADD
+      </div>
+      <div class="rowCenter">
+        <div class="UIwindow">
+          <div class="rowCenter">
+            Amount
+          </div>
+          <input type="number" step="100" min="100" [(ngModel)] = "supply.amount"/>
+          <div class="rowCenter">
+            Price/Unit
+          </div>
+          <input type="number" step="0.1" min="0.1"[(ngModel)] = "supply.price"/>
+          <div class="rowCenter">
+            <button (click)="addToStorage()" class="myButton">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div class="column">
+    <div>
+      <div class="title queue">
+        QUEUE (FIFO)
+      </div>
+    </div>
+    <img [src]="startArrow" width="125">
+    <div class="box" *ngFor="let item of empty">
+      <img [src]="endArrow" width="125">
+      <div class="textContainer">
+        <div class="textOnImage">[EMPTY]</div>
+      </div>
+    </div>
+    <div *ngFor="let item of queue">
+      <app-brick-pallets [data] = "item"></app-brick-pallets>
+    </div>
+    <img [src]="endArrow" width="125">
+  </div>
+  <div class="column">
+    <div class="window">
+      <div class="title">
+        SUBSTRACT
+      </div>
+      <div class="rowCenter">
+        <div class="UIwindow">
+          <div class="rowCenter">
+            Amount
+          </div>
+          <input type="number" step="100" min="0" [(ngModel)] = "supply.wanted"/>
+          <div class="rowCenter">
+            <button (click)="removeFromStorage()" class="myButton">-</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
 </div>
-<div>
-  SUBSTRACT
-  <input type="number" step="100" min="0" [(ngModel)] = "supply.wanted"/>
-  <button (click)="removeFromStorage()">-</button>
-</div>
-<div class="task" *ngFor="let item of queue">Amount: {{item.amount}} Price per unit: {{item.price}}</div>

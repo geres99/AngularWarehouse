@@ -1,0 +1,21 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 125px;
+}
+.textOnImage {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+}
+.textContainer {
+  margin-top: -75px;
+  text-shadow: 2px 1px #ffffff;
+
+  font-size: 15px;
+  font-weight: 900;
+  font-family: "Roboto";
+}
+.spaceFiller {
+  height: 39px;
+}
