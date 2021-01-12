@@ -76,3 +76,10 @@
 
   margin-bottom: 20px;
 }
+.stocked {
+  margin-top: 15px;
+}
+.spent {
+  margin-top: -25px;
+  margin-bottom: 50px;
+}

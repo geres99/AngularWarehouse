@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BrickPalletsComponent implements OnInit {
 
   @Input() data:string
-  bricksImage:string = "assets/images/bricks7.png"
+  bricksImage:string = "assets/images/bricks.png"
 
   constructor() { }
 
