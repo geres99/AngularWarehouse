@@ -33,6 +33,7 @@ export class AppComponent {
     if(this.supply.wanted > 0 && this.supply.wanted % 100 === 0) {
       if(this.supply.wanted > this.stocked) {
         this.limit = [{wanted: this.supply.wanted, limit: this.stocked}]
+        this.supply.wanted = 0
         setTimeout(() => {this.limit = []}, 5000)
       }
       else {
@@ -68,5 +69,8 @@ export class AppComponent {
     else{
       this.empty = []
     }
+  }
+  closeButton = () => {
+    this.limit = []
   }
 }
