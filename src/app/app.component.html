@@ -1,5 +1,8 @@
 <div class="title queue stocked">STOCKED: {{stocked}}</div>
 <div class="title queue spent">MONEY SPENT: {{moneySpent}}zł</div>
+<div *ngFor="let item of limit">
+  {{item.wanted}} {{item.limit}}
+</div>
 <div class="row">
   <div class="column">
     <div class="window">

@@ -13,6 +13,7 @@ export class AppComponent {
   moneySpent = 0
   queue = []
   empty = ["empty"]
+  limit = []
 
   startArrow:string = "assets/images/startArrow.png"
   endArrow:string = "assets/images/endArrow.png"
@@ -30,27 +31,33 @@ export class AppComponent {
   removeFromStorage = () => {
     this.moneySpent = 0
     if(this.supply.wanted > 0 && this.supply.wanted % 100 === 0) {
-      for(let i = 0; i<this.queue.length; i++) {
-        if(this.queue[i].amount >= this.supply.wanted) {
-          this.moneySpent = this.moneySpent + (this.supply.wanted * this.queue[i].price)
-          this.stocked = this.stocked - this.supply.wanted
-          this.queue[i].amount = this.queue[i].amount - this.supply.wanted
-          this.supply.wanted = 0
-          this.queue = this.queue.filter((x) => (x.amount !== 0))
-          this.isEmpty()
-          return
-        }
-        else {
-          this.moneySpent = this.moneySpent + (this.queue[i].amount * this.queue[i].price)
-          this.stocked = this.stocked - this.queue[i].amount
-          this.supply.wanted = this.supply.wanted - this.queue[i].amount
-          this.queue[i].amount = 0
-        }
+      if(this.supply.wanted > this.stocked) {
+        this.limit = [{wanted: this.supply.wanted, limit: this.stocked}]
+        setTimeout(() => {this.limit = []}, 5000)
       }
-      this.queue = this.queue.filter((x) => (x.amount !== 0))
-      this.isEmpty()
-      if(this.supply.wanted > 0) {
-        console.log("Zostało " + this.supply.wanted + " cegieł")
+      else {
+        for(let i = 0; i<this.queue.length; i++) {
+          if(this.queue[i].amount >= this.supply.wanted) {
+            this.moneySpent = this.moneySpent + (this.supply.wanted * this.queue[i].price)
+            this.stocked = this.stocked - this.supply.wanted
+            this.queue[i].amount = this.queue[i].amount - this.supply.wanted
+            this.supply.wanted = 0
+            this.queue = this.queue.filter((x) => (x.amount !== 0))
+            this.isEmpty()
+            return
+          }
+          else {
+            this.moneySpent = this.moneySpent + (this.queue[i].amount * this.queue[i].price)
+            this.stocked = this.stocked - this.queue[i].amount
+            this.supply.wanted = this.supply.wanted - this.queue[i].amount
+            this.queue[i].amount = 0
+          }
+        }
+        this.queue = this.queue.filter((x) => (x.amount !== 0))
+        this.isEmpty()
+        if(this.supply.wanted > 0) {
+          console.log("Zostało " + this.supply.wanted + " cegieł")
+        }
       }
     }
   }
