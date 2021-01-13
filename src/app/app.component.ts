@@ -14,6 +14,7 @@ export class AppComponent {
   queue = []
   empty = ["empty"]
   limit = []
+  error = []
 
   startArrow:string = "assets/images/startArrow.png"
   endArrow:string = "assets/images/endArrow.png"
@@ -23,6 +24,12 @@ export class AppComponent {
     if(this.supply.amount > 0 && this.supply.amount % 100 === 0 && this.supply.price > 0 && this.supply.price * 10 % 1 === 0) {
       this.queue.push({amount: this.supply.amount, price: this.supply.price})
       this.stocked = this.supply.amount + this.stocked
+      this.supply.amount = 100
+      this.supply.price = 2.50
+    }
+    else {
+      this.error = ["error"]
+      setTimeout(() => {this.error = []}, 5000)
       this.supply.amount = 100
       this.supply.price = 2.50
     }
@@ -61,6 +68,10 @@ export class AppComponent {
         }
       }
     }
+    else {
+      this.error = ["error"]
+      setTimeout(() => {this.error = []}, 5000)
+    }
   }
   isEmpty = () => {
     if(this.queue.length === 0) {
@@ -72,5 +83,8 @@ export class AppComponent {
   }
   closeButton = () => {
     this.limit = []
+  }
+  closeButtonError = () => {
+    this.error = []
   }
 }

@@ -9,6 +9,15 @@
     <button class="closeButton" (click) = "closeButton()">x</button>
   </div>
 </div>
+<div *ngFor="let item of error">
+  <div class="error">
+    <div></div>
+    <div>
+      Sorry, we accept only amounts that are highter than 0 and multiple of 100 and price/unit that is highter than 0 and multiple by 0.1
+    </div>
+    <button class="closeButton" (click) = "closeButtonError()">x</button>
+  </div>
+</div>
 <div class="row">
   <div class="column">
     <div class="window">
